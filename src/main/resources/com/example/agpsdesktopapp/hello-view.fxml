@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.agpsdesktopapp.HelloController">
+    <HBox spacing="10">
+        <Label text="Номер пожарной части:"/>
+        <TextField fx:id="numberFireDepartmentTextField"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Количество единиц пожарной техники:"/>
+        <TextField fx:id="numberACTextField" promptText="АЦ"/>
+        <TextField fx:id="numberANRTextField" promptText="АНР"/>
+        <TextField fx:id="numberALTextField" promptText="АЛ"/>
+    </HBox>
+    <HBox spacing="10">
+        <Button text="Ввести данные" onAction="#enterData"/>
+        <Button text="Показать результат" onAction="#showResult"/>
+        <Button text="Сбросить данные" onAction="#resetData"/>
+        <Button text="Выход" onAction="#exit"/>
+    </HBox>
+    <Label fx:id="resultLabel" />
+</VBox>
