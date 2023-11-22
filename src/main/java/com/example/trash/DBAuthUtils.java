@@ -1,4 +1,4 @@
-package com.example.agpsdesktopapp;
+package com.example.trash;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class DBUtils {
+public class DBAuthUtils {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/Hotel";
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "vfhc2015";
@@ -20,16 +20,16 @@ public class DBUtils {
 
         if (login != null && status != null){
             try {
-                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+                FXMLLoader loader = new FXMLLoader(DBAuthUtils.class.getResource(fxmlFile));
                 root = loader.load();
-                LoggedInController loggedInController = loader.getController();
+                AdminLoggedInController loggedInController = loader.getController();
                 loggedInController.setUserInformation(login, status);
             } catch (IOException e){
                 e.printStackTrace();
             }
         } else {
             try{
-                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
+                root = FXMLLoader.load(DBAuthUtils.class.getResource(fxmlFile));
             }catch (IOException e){
                 e.printStackTrace();
             }
@@ -64,7 +64,7 @@ public class DBUtils {
                 psInsert.setString(3, "user");
                 psInsert.executeUpdate();
 
-                changeScene(actionEvent, "logged-in.fxml", "xexexeex", login, "user");
+                changeScene(actionEvent, "user-logged-in.fxml", "xexexeex", login, "user");
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -120,9 +120,9 @@ public class DBUtils {
                     String retrievedStatus = resultSet.getString("status");
                     if (retrievedPassword.equals(password)){
                         switch (retrievedStatus){
-                            case "user" -> changeScene(actionEvent, "logged-in.fxml", "user", login, retrievedStatus);
-                            case "hotel" -> changeScene(actionEvent, "logged-in.fxml", "hotel", login, retrievedStatus);
-                            case "admin" -> changeScene(actionEvent, "logged-in.fxml", "admin", login, retrievedStatus);
+                            case "user" -> changeScene(actionEvent, "user-logged-in.fxml", "user", login, retrievedStatus);
+                            case "hotel" -> changeScene(actionEvent, "hotel-logged-in.fxml", "hotel", login, retrievedStatus);
+                            case "admin" -> changeScene(actionEvent, "admin-logged-in.fxml", "admin", login, retrievedStatus);
                         }
                     }else{
                         System.out.println("Password");

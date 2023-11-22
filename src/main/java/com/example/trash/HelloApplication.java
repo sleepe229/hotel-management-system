@@ -1,4 +1,4 @@
-package com.example.agpsdesktopapp;
+package com.example.trash;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

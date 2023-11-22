@@ -1,4 +1,4 @@
-package com.example.agpsdesktopapp;
+package com.example.trash;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 public class SignUpController implements Initializable {
     public Button button_sign_up;
     public TextField tf_login;
-    public TextField tf_password;
+    public PasswordField tf_password;
     public Button button_log_in;
 
     @Override
@@ -20,7 +20,7 @@ public class SignUpController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (!tf_login.getText().trim().isEmpty() &&!tf_password.getText().trim().isEmpty()){
-                    DBUtils.signUpUser(actionEvent, tf_login.getText(), tf_password.getText(), "user");
+                    DBAuthUtils.signUpUser(actionEvent, tf_login.getText(), tf_password.getText(), "user");
                 } else{
                     System.out.println("Please fill in all information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -33,7 +33,7 @@ public class SignUpController implements Initializable {
         button_log_in.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "hello-view.fxml", "Log in!", null, null);
+                DBAuthUtils.changeScene(actionEvent, "hello-view.fxml", "Log in!", null, null);
             }
         });
 
