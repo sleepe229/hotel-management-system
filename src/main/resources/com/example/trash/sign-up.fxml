@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.agpsdesktopapp.SignUpController">
+   <children>
+      <Button fx:id="button_sign_up" layoutX="248.0" layoutY="341.0" mnemonicParsing="false" text="Sign Up" />
+      <TextField fx:id="tf_login" layoutX="226.0" layoutY="154.0" text="Login" />
+      <TextField fx:id="tf_password" layoutX="226.0" layoutY="200.0" text="Password" />
+      <Button fx:id="button_log_in" layoutX="438.0" layoutY="274.0" mnemonicParsing="false" text="Login!" />
+      <Label layoutX="323.0" layoutY="278.0" text="Do u have account?" />
+   </children>
+</AnchorPane>
