@@ -22,8 +22,7 @@ public class DBAuthUtils {
             try {
                 FXMLLoader loader = new FXMLLoader(DBAuthUtils.class.getResource(fxmlFile));
                 root = loader.load();
-                AdminLoggedInController loggedInController = loader.getController();
-                loggedInController.setUserInformation(login, status);
+                var loggedInController = loader.getController();
             } catch (IOException e){
                 e.printStackTrace();
             }

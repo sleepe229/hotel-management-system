@@ -13,7 +13,7 @@
          <children>
             <Button fx:id="button_sign_up" layoutX="358.0" layoutY="244.0" mnemonicParsing="false" text="Sign up" />
             <TextField fx:id="tf_login" layoutX="216.0" layoutY="149.0" promptText="Login" />
-            <TextField fx:id="tf_password" layoutX="216.0" layoutY="200.0" promptText="Password" />
+            <PasswordField fx:id="tf_password" layoutX="216.0" layoutY="200.0" promptText="Password" />
             <Button fx:id="button_login" layoutX="268.0" layoutY="292.0" mnemonicParsing="false" text="Login" />
             <Label layoutX="208.0" layoutY="248.0" text="U haven't got account?" />
          </children>

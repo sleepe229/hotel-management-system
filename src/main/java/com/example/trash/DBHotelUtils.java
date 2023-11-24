@@ -4,30 +4,31 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
+import java.util.List;
 
 public class DBHotelUtils {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/Hotel";
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "vfhc2015";
 
-    public static void actionHotel(ActionEvent actionEvent, String id, String name, String stars, String location, String operation){
+    public static void actionHotel(ActionEvent actionEvent, String id, String name, String stars, String location, String operation) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckHotelExists = null;
         ResultSet resultSet = null;
-        try{
+        try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             psCheckHotelExists = connection.prepareStatement("SELECT * FROM hotels WHERE id = ?");
             psCheckHotelExists.setInt(1, Integer.parseInt(id));
             resultSet = psCheckHotelExists.executeQuery();
             switch (operation) {
-                case "add" ->{
-                    if (resultSet.isBeforeFirst()){
+                case "add" -> {
+                    if (resultSet.isBeforeFirst()) {
                         System.out.println("Hotel already exists");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Rechange data. U cant use that.");
                         alert.show();
-                    } else{
+                    } else {
                         psInsert = connection.prepareStatement("INSERT INTO hotels (id, name, stars, location) VALUES (?, ?, ?, ?)");
                         psInsert.setInt(1, Integer.parseInt(id));
                         psInsert.setString(2, name);
@@ -37,8 +38,8 @@ public class DBHotelUtils {
 
                     }
                 }
-                case "delete" ->{
-                    if(resultSet.isBeforeFirst()){
+                case "delete" -> {
+                    if (resultSet.isBeforeFirst()) {
                         psInsert = connection.prepareStatement("DELETE FROM hotels WHERE id = ?");
                         psInsert.setInt(1, Integer.parseInt(id));
                         psInsert.executeUpdate();
@@ -51,52 +52,53 @@ public class DBHotelUtils {
                 }
             }
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null){
-                try{
+            if (resultSet != null) {
+                try {
                     resultSet.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (psCheckHotelExists != null){
-                try{
+            if (psCheckHotelExists != null) {
+                try {
                     psCheckHotelExists.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (psInsert != null){
-                try{
+            if (psInsert != null) {
+                try {
                     psInsert.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (connection != null){
-                try{
+            if (connection != null) {
+                try {
                     connection.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public static void actionRoom(ActionEvent actionEvent, String id, String type, String status, String number, String operation){
+
+    public static void actionRoom(ActionEvent actionEvent, String id, String type, String status, String number, String operation) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckRoomExists = null;
         ResultSet resultSet = null;
-        try{
+        try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             psCheckRoomExists = connection.prepareStatement("SELECT * FROM rooms WHERE id = ?");
             psCheckRoomExists.setInt(1, Integer.parseInt(id));
             resultSet = psCheckRoomExists.executeQuery();
 
             switch (operation) {
-                case "add" ->{
+                case "add" -> {
                     if (resultSet.isBeforeFirst()) {
                         System.out.println("Room already exists");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -111,8 +113,8 @@ public class DBHotelUtils {
                         psInsert.executeUpdate();
                     }
                 }
-                case "delete" ->{
-                    if(resultSet.isBeforeFirst()){
+                case "delete" -> {
+                    if (resultSet.isBeforeFirst()) {
                         psInsert = connection.prepareStatement("DELETE FROM rooms WHERE id = ? AND number = ?");
                         psInsert.setInt(1, Integer.parseInt(id));
                         psInsert.setInt(2, Integer.parseInt(number));
@@ -125,39 +127,67 @@ public class DBHotelUtils {
                     }
                 }
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null){
-                try{
+            if (resultSet != null) {
+                try {
                     resultSet.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (psCheckRoomExists != null){
-                try{
+            if (psCheckRoomExists != null) {
+                try {
                     psCheckRoomExists.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (psInsert != null){
-                try{
+            if (psInsert != null) {
+                try {
                     psInsert.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (connection != null){
-                try{
+            if (connection != null) {
+                try {
                     connection.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public static void RoomForBuy(){}
 
+    public static List<String> founderRooms(ActionEvent actionEvent, String id) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String name = null, stars = null, location = null;
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            preparedStatement = connection.prepareStatement("SELECT type, status, number FROM rooms WHERE id = ?");
+            preparedStatement.setInt(1, Integer.parseInt(id));
+            resultSet = preparedStatement.executeQuery();
+
+            if (!resultSet.isBeforeFirst()) {
+                System.out.println("Hotel not founded in the DB");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Provided credentials are incorrect");
+                alert.show();
+            } else {
+                while (resultSet.next()) {
+                    name = resultSet.getString(2);
+                    stars = resultSet.getString(3);
+                    location = resultSet.getString(4);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return List.of(new String[]{id, name, stars, location});
+    }
 }

@@ -19,7 +19,7 @@ public class HelloController implements Initializable{
     @FXML
     private TextField tf_login;
     @FXML
-    private TextField tf_password;
+    private PasswordField tf_password;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
