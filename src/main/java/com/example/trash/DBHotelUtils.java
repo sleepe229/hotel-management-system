@@ -1,10 +1,11 @@
 package com.example.trash;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
-import java.util.List;
 
 public class DBHotelUtils {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/Hotel";
@@ -161,16 +162,17 @@ public class DBHotelUtils {
         }
     }
 
-    public static List<String> founderRooms(ActionEvent actionEvent, String id) {
+    public static ObservableList<Object> founderRooms(ActionEvent actionEvent, String id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String name = null, stars = null, location = null;
+        ObservableList<Object> RoomsList = FXCollections.observableArrayList();
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            preparedStatement = connection.prepareStatement("SELECT type, status, number FROM rooms WHERE id = ?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM rooms WHERE id = ?");
             preparedStatement.setInt(1, Integer.parseInt(id));
             resultSet = preparedStatement.executeQuery();
+            RoomsList.clear();
 
             if (!resultSet.isBeforeFirst()) {
                 System.out.println("Hotel not founded in the DB");
@@ -179,15 +181,42 @@ public class DBHotelUtils {
                 alert.show();
             } else {
                 while (resultSet.next()) {
-                    name = resultSet.getString(2);
-                    stars = resultSet.getString(3);
-                    location = resultSet.getString(4);
+                    RoomsList.add(new Room(
+                    resultSet.getInt("id"),
+                    resultSet.getString("type"),
+                    resultSet.getString("status"),
+                    resultSet.getInt("number")));
                 }
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return List.of(new String[]{id, name, stars, location});
+        return RoomsList;
+    }
+    public static ObservableList<Object> founderHotels(ActionEvent actionEvent) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        ObservableList<Object> HotelList = FXCollections.observableArrayList();
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            preparedStatement = connection.prepareStatement("SELECT * FROM hotels");
+            resultSet = preparedStatement.executeQuery();
+            HotelList.clear();
+
+            while (resultSet.next()) {
+                HotelList.add(new Hotel(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("stars"),
+                        resultSet.getString("location")));
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return HotelList;
     }
 }

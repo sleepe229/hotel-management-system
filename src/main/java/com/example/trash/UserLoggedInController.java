@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -14,16 +16,19 @@ import java.util.ResourceBundle;
 
 public class UserLoggedInController implements Initializable {
 
-    public TableColumn table_column_c1;
-    public TableColumn table_column_c2;
-    public TableColumn table_column_c3;
-    public TableColumn table_column_c4;
+    public TableColumn<String, String> table_column_c1;
+    public TableColumn<String, String> table_column_c2;
+    public TableColumn<String, String> table_column_c3;
+    public TableColumn<String, String> table_column_c4;
     public TextField tf_room_founder_id;
     public Button button_room_found;
     public Button button_book_room;
     public TextField tf_hotel_id;
     public TextField tf_room_number;
     public Button button_booked_rooms;
+
+    public TableView<Object> table_view;
+    public Button button_hotel_reload;
     @FXML
     private Button button_logout;
 
@@ -38,12 +43,30 @@ public class UserLoggedInController implements Initializable {
         button_room_found.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBHotelUtils.founderRooms(actionEvent, tf_room_founder_id.getText());
                 table_column_c1.setText("id");
                 table_column_c2.setText("type");
                 table_column_c3.setText("status");
                 table_column_c4.setText("number");
+                table_view.setItems(DBHotelUtils.founderRooms(actionEvent, tf_room_founder_id.getText()));
+                table_column_c1.setCellValueFactory(new PropertyValueFactory<>("id"));
+                table_column_c2.setCellValueFactory(new PropertyValueFactory<>("type"));
+                table_column_c3.setCellValueFactory(new PropertyValueFactory<>("status"));
+                table_column_c4.setCellValueFactory(new PropertyValueFactory<>("number"));
 
+            }
+        });
+        button_hotel_reload.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                table_column_c1.setText("id");
+                table_column_c2.setText("name");
+                table_column_c3.setText("stars");
+                table_column_c4.setText("location");
+                table_view.setItems(DBHotelUtils.founderHotels(actionEvent));
+                table_column_c1.setCellValueFactory(new PropertyValueFactory<>("id"));
+                table_column_c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+                table_column_c3.setCellValueFactory(new PropertyValueFactory<>("stars"));
+                table_column_c4.setCellValueFactory(new PropertyValueFactory<>("location"));
             }
         });
     }
