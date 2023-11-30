@@ -4,19 +4,52 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.HelloController">
-   <center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.HelloController">
+   <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="button_sign_up" layoutX="358.0" layoutY="244.0" mnemonicParsing="false" text="Sign up" />
-            <TextField fx:id="tf_login" layoutX="216.0" layoutY="149.0" promptText="Login" />
-            <PasswordField fx:id="tf_password" layoutX="216.0" layoutY="200.0" promptText="Password" />
-            <Button fx:id="button_login" layoutX="268.0" layoutY="292.0" mnemonicParsing="false" text="Login" />
-            <Label layoutX="208.0" layoutY="248.0" text="U haven't got account?" />
+            <ImageView fitHeight="443.0" fitWidth="663.0">
+               <image>
+                  <Image url="@pictures/flowers.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#222426" height="400.0" layoutX="20.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="230.0" AnchorPane.bottomAnchor="43.19999999999999" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="413.20000000000005" AnchorPane.topAnchor="0.0" />
+            <TextField fx:id="tf_login" layoutX="75.0" layoutY="121.0" promptText="Login" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="438.6" />
+            <PasswordField fx:id="tf_password" layoutX="76.0" layoutY="163.0" promptText="Password" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="438.6" />
+            <Button fx:id="button_login" layoutX="123.0" layoutY="205.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 30; -fx-background-color: FF1A05;" text="Login" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="205.0">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Label layoutX="66.0" layoutY="70.0" text="What's the room?" textFill="#f7f6f2">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Label>
+            <Button fx:id="button_sign_up" layoutX="119.0" layoutY="300.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" text="Sign up" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="119.0" />
+            <Label layoutX="85.0" layoutY="271.0" text="U haven't got account?" textFill="#f7f6f2" AnchorPane.leftAnchor="85.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f6f2" height="155.0" layoutX="395.0" layoutY="128.0" stroke="#f7f6f2" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="153.0" AnchorPane.leftAnchor="394.4" AnchorPane.rightAnchor="115.20000000000005" />
+            <Text layoutX="406.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WtRoom?" AnchorPane.bottomAnchor="179.1765625" AnchorPane.leftAnchor="405.20859375" AnchorPane.rightAnchor="148.39140625000005" AnchorPane.topAnchor="232.1015625">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="108.0" fitWidth="111.0" layoutX="436.0" layoutY="135.0" AnchorPane.bottomAnchor="200.2" AnchorPane.leftAnchor="436.0" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="135.0">
+               <image>
+                  <Image url="@pictures/bird.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-   </center>
+   </top>
 </BorderPane>
