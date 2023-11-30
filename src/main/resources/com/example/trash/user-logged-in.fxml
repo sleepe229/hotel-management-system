@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.UserLoggedInController">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="602.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="button_logout" layoutX="284.0" layoutY="333.0" mnemonicParsing="false" text="Logout" />
-            <TableView fx:id="table_view" layoutX="73.0" layoutY="74.0" prefHeight="184.0" prefWidth="442.0">
+            <Button fx:id="button_logout" layoutX="346.0" layoutY="350.0" mnemonicParsing="false" text="Logout" />
+            <TableView fx:id="table_view" layoutX="73.0" layoutY="74.0" prefHeight="184.0" prefWidth="437.0">
               <columns>
                 <TableColumn fx:id="table_column_c1" prefWidth="105.0" text="id" />
                 <TableColumn fx:id="table_column_c2" prefWidth="106.0" text="name" />
@@ -21,13 +21,17 @@
               </columns>
             </TableView>
             <TextField fx:id="tf_room_founder_id" layoutX="87.0" layoutY="26.0" promptText="rooms by hotel id" />
-            <Button fx:id="button_room_found" layoutX="312.0" layoutY="26.0" mnemonicParsing="false" text="found" />
-            <Button fx:id="button_book_room" layoutX="451.0" layoutY="281.0" mnemonicParsing="false" text="book" />
-            <TextField fx:id="tf_hotel_id" layoutX="87.0" layoutY="282.0" promptText="hotel id" />
-            <TextField fx:id="tf_room_number" layoutX="264.0" layoutY="282.0" promptText="room number" />
+            <Button fx:id="button_room_found" layoutX="260.0" layoutY="26.0" mnemonicParsing="false" text="found" />
+            <Button fx:id="button_book_room" layoutX="197.0" layoutY="350.0" mnemonicParsing="false" text="book" />
+            <TextField fx:id="tf_hotel_id" layoutX="48.0" layoutY="282.0" promptText="hotel id" />
+            <TextField fx:id="tf_room_number" layoutX="210.0" layoutY="281.0" promptText="room number" />
             <Button fx:id="button_booked_rooms" layoutX="479.0" layoutY="26.0" mnemonicParsing="false" text="booked rooms" />
-            <Button fx:id="button_hotel_reload" layoutX="408.0" layoutY="321.0" mnemonicParsing="false" text="hotel list reaload" />
+            <Button fx:id="button_hotel_reload" layoutX="346.0" layoutY="26.0" mnemonicParsing="false" text="hotel list reaload" />
+            <TextField fx:id="tf_client_username" layoutX="210.0" layoutY="316.0" promptText="full name" />
+            <TextField fx:id="tf_client_email" layoutX="377.0" layoutY="316.0" promptText="email" />
+            <TextField fx:id="tf_client_phone_number" layoutX="377.0" layoutY="283.0" promptText="phone number" />
+            <TextField fx:id="tf_client_login" layoutX="48.0" layoutY="316.0" promptText="ur login" />
          </children>
       </AnchorPane>
-   </center>
+   </left>
 </BorderPane>
