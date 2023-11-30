@@ -29,11 +29,17 @@ public class UserLoggedInController implements Initializable {
 
     public TableView<Object> table_view;
     public Button button_hotel_reload;
+    public TextField tf_client_username;
+    public TextField tf_client_email;
+    public TextField tf_client_phone_number;
+    public TextField tf_client_login;
+
     @FXML
     private Button button_logout;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -58,7 +64,7 @@ public class UserLoggedInController implements Initializable {
         button_hotel_reload.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                table_column_c1.setText("id");
+                table_column_c1.setText("hotel_id");
                 table_column_c2.setText("name");
                 table_column_c3.setText("stars");
                 table_column_c4.setText("location");
@@ -67,6 +73,12 @@ public class UserLoggedInController implements Initializable {
                 table_column_c2.setCellValueFactory(new PropertyValueFactory<>("name"));
                 table_column_c3.setCellValueFactory(new PropertyValueFactory<>("stars"));
                 table_column_c4.setCellValueFactory(new PropertyValueFactory<>("location"));
+            }
+        });
+        button_book_room.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBHotelUtils.bookRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_phone_number.getText(), tf_client_login.getText(), tf_client_username.getText(), tf_client_email.getText());
             }
         });
     }
