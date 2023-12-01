@@ -14,7 +14,7 @@ import java.sql.*;
 public class DBAuthUtils {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/Hotel";
     private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "vfhc2015";
+    private static final String DB_PASSWORD = "123";
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String login, String status){
         Parent root = null;
 

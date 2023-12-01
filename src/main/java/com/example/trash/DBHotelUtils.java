@@ -10,7 +10,7 @@ import java.sql.*;
 public class DBHotelUtils {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/Hotel";
     private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "vfhc2015";
+    private static final String DB_PASSWORD = "123";
 
     public static void actionHotel(ActionEvent actionEvent, String id, String name, String stars, String location, String operation) {
         Connection connection = null;

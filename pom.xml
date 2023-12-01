@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>agps-desktop-app</artifactId>
+    <artifactId>hotel-management-system</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>agps-desktop-app</name>
+    <name>hotel-management-system</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
