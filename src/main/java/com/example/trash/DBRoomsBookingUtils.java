@@ -72,7 +72,7 @@ public class DBRoomsBookingUtils{
         }
     }
 
-    public static ObservableList<Object> founderBookedRooms(ActionEvent actionEvent, String login) {
+    public static ObservableList<Object> founderBookedRooms(ActionEvent actionEvent, String login, String operation) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -84,7 +84,12 @@ public class DBRoomsBookingUtils{
                 preparedStatement.setString(1, login);
                 resultSet = preparedStatement.executeQuery();
                 BookedRoomsList.clear();
-            }else{
+            }else if(operation != null){
+                connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+                preparedStatement = connection.prepareStatement("SELECT * FROM booking_rooms where status = 'checking'");
+                resultSet = preparedStatement.executeQuery();
+                BookedRoomsList.clear();
+            } else{
                 connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
                 preparedStatement = connection.prepareStatement("SELECT * FROM booking_rooms");
                 resultSet = preparedStatement.executeQuery();
@@ -114,4 +119,82 @@ public class DBRoomsBookingUtils{
         return BookedRoomsList;
     }
 
+    public static void actionBookingRoom(ActionEvent actionEvent, String id, String number, String userlogin, String operation) {
+        Connection connection = null;
+        PreparedStatement psInsert = null;
+        PreparedStatement psCheckRoomExists = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            psCheckRoomExists = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and status = 'checking'");
+            psCheckRoomExists.setInt(1, Integer.parseInt(id));
+            resultSet = psCheckRoomExists.executeQuery();
+
+            switch (operation) {
+                case "accept" -> {
+                    if (!resultSet.isBeforeFirst()) {
+                        System.out.println("Room already not exists");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Rechange data. U cant use that.");
+                        alert.show();
+                    } else {
+                        psInsert = connection.prepareStatement("update booking_rooms set status = 'ready_to_buy' where id = ? and roomnumber = ? and clientlogin = ?");
+                        psInsert.setInt(1, Integer.parseInt(id));
+                        psInsert.setInt(2, Integer.parseInt(number));
+                        psInsert.setString(3, userlogin);
+                        psInsert.executeUpdate();
+                    }
+                }
+                case "reject" -> {
+                    if (resultSet.isBeforeFirst()) {
+                        psInsert = connection.prepareStatement("delete from booking_rooms where id = ? and number = ? and clientlogin = ?");
+                        psInsert.setInt(1, Integer.parseInt(id));
+                        psInsert.setInt(2, Integer.parseInt(number));
+                        psInsert.setString(3, userlogin);
+                        psInsert.executeUpdate();
+                        psInsert = connection.prepareStatement("update rooms set status = 'free' where hotel_id = ? and number = ?");
+                        psInsert.setInt(1, Integer.parseInt(id));
+                        psInsert.setInt(2, Integer.parseInt(number));
+                        psInsert.executeUpdate();
+                    } else {
+                        System.out.println("Room already not exists");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Rechange data. U cant use that.");
+                        alert.show();
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (psCheckRoomExists != null) {
+                try {
+                    psCheckRoomExists.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (psInsert != null) {
+                try {
+                    psInsert.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }

@@ -22,9 +22,9 @@
                   <TableColumn fx:id="table_column_client_email" prefWidth="77.0" text="client email" />
               </columns>
             </TableView>
-            <TextField layoutX="41.0" layoutY="291.0" promptText="hotel id" />
-            <TextField layoutX="215.0" layoutY="291.0" promptText="room number" />
-            <TextField layoutX="410.0" layoutY="291.0" promptText="client login" />
+            <TextField fx:id="tf_hotel_id" layoutX="41.0" layoutY="291.0" promptText="hotel id" />
+            <TextField fx:id="tf_room_number" layoutX="215.0" layoutY="291.0" promptText="room number" />
+            <TextField fx:id="tf_client_login" layoutX="410.0" layoutY="291.0" promptText="client login" />
             <Button fx:id="button_accept_room" layoutX="176.0" layoutY="330.0" mnemonicParsing="false" text="Accept" />
             <Button fx:id="button_reject_room" layoutX="358.0" layoutY="330.0" mnemonicParsing="false" text="Reject" />
             <Button fx:id="button_reload_table" layoutX="515.0" layoutY="330.0" mnemonicParsing="false" text="reload" />

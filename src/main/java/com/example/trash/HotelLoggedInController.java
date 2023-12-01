@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -24,6 +25,9 @@ public class HotelLoggedInController implements Initializable {
     public Button button_reload_table;
     public Button button_accept_room;
     public Button button_reject_room;
+    public TextField tf_hotel_id;
+    public TextField tf_room_number;
+    public TextField tf_client_login;
     @FXML
     private Button button_logout;
 
@@ -39,7 +43,7 @@ public class HotelLoggedInController implements Initializable {
         button_reload_table.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                table_view.setItems(DBRoomsBookingUtils.founderBookedRooms(actionEvent, null));
+                table_view.setItems(DBRoomsBookingUtils.founderBookedRooms(actionEvent, null, "xd"));
                 table_column_hotel_id.setCellValueFactory(new PropertyValueFactory<>("id"));
                 table_column_room_number.setCellValueFactory(new PropertyValueFactory<>("number"));
                 table_column_client_fullname.setCellValueFactory(new PropertyValueFactory<>("fullname"));
@@ -51,12 +55,13 @@ public class HotelLoggedInController implements Initializable {
         button_accept_room.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                DBRoomsBookingUtils.actionBookingRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_login.getText(), "accept");
             }
         });
         button_reject_room.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                DBRoomsBookingUtils.actionBookingRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_login.getText(), "reject");
             }
         });
     }
