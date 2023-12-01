@@ -39,7 +39,7 @@ public class HotelLoggedInController implements Initializable {
         button_reload_table.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBRoomsBookingUtils.founderBookedRooms(actionEvent, null);
+                table_view.setItems(DBRoomsBookingUtils.founderBookedRooms(actionEvent, null));
                 table_column_hotel_id.setCellValueFactory(new PropertyValueFactory<>("id"));
                 table_column_room_number.setCellValueFactory(new PropertyValueFactory<>("number"));
                 table_column_client_fullname.setCellValueFactory(new PropertyValueFactory<>("fullname"));
