@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.RoomBookingController">
    <children>
       <TableView fx:id="table_view_booked_number" layoutY="74.0" prefHeight="200.0" prefWidth="600.0">
@@ -19,8 +18,8 @@
             <TableColumn fx:id="table_column_room_status" prefWidth="108.0" text="status" />
         </columns>
       </TableView>
-      <TextField layoutX="73.0" layoutY="298.0" promptText="hotel id" />
-      <TextField layoutX="352.0" layoutY="298.0" promptText="room number" />
+      <TextField fx:id="tf_hotel_id" layoutX="73.0" layoutY="298.0" promptText="hotel id" />
+      <TextField fx:id="tf_room_number" layoutX="352.0" layoutY="298.0" promptText="room number" />
       <Button fx:id="button_buy_number" layoutX="260.0" layoutY="338.0" mnemonicParsing="false" text="buy number" />
       <Button fx:id="button_back" layoutX="501.0" layoutY="338.0" mnemonicParsing="false" text="back" />
    </children>

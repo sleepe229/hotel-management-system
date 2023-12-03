@@ -12,29 +12,32 @@ public class DBRoomsBookingUtils{
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "vfhc2015";
 
-    public static void buyAcceptedRoom(ActionEvent actionEvent, String id, String status) {
+    public static void buyAcceptedRoom(ActionEvent actionEvent, String id, String roomnumber) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckHotelExists = null;
         ResultSet resultSet = null;
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            psCheckHotelExists = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and status = ?");
+            psCheckHotelExists = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and roomnumber = ? and clientlogin = ?");
             psCheckHotelExists.setInt(1, Integer.parseInt(id));
-            psCheckHotelExists.setString(2, status);
+            psCheckHotelExists.setInt(2, Integer.parseInt(roomnumber));
+            psCheckHotelExists.setString(3, UserLoggedInController.LAST_USER_LOGIN);
             resultSet = psCheckHotelExists.executeQuery();
 
-            if (resultSet.isBeforeFirst()) {
-                System.out.println("Hotel already exists");
+            if (!resultSet.isBeforeFirst()) {
+                System.out.println("Room not booked");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Rechange data. U cant use that.");
+                alert.setContentText("That room aint booked with u.");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("update booking_rooms set status = 'bought' where id = ?, and status = ?)");
+                psInsert = connection.prepareStatement("update booking_rooms set status = 'bought' where id = ? and roomnumber = ?");
                 psInsert.setInt(1, Integer.parseInt(id));
-                psInsert.setString(2, status);
+                psInsert.setInt(2, Integer.parseInt(roomnumber));
                 psInsert.executeUpdate();
-
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("U bought the room");
+                alert.show();
             }
 
 
@@ -72,7 +75,7 @@ public class DBRoomsBookingUtils{
         }
     }
 
-    public static ObservableList<Object> founderBookedRooms(ActionEvent actionEvent, String login, String operation) {
+    public static ObservableList<Object> founderBookedRooms(ActionEvent actionEvent, String login) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -80,16 +83,11 @@ public class DBRoomsBookingUtils{
         try {
             if(login != null) {
                 connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-                preparedStatement = connection.prepareStatement("SELECT * FROM booking_rooms WHERE login = ?");
+                preparedStatement = connection.prepareStatement("SELECT * FROM booking_rooms WHERE clientlogin = ?");
                 preparedStatement.setString(1, login);
                 resultSet = preparedStatement.executeQuery();
                 BookedRoomsList.clear();
-            }else if(operation != null){
-                connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-                preparedStatement = connection.prepareStatement("SELECT * FROM booking_rooms where status = 'checking'");
-                resultSet = preparedStatement.executeQuery();
-                BookedRoomsList.clear();
-            } else{
+            }else {
                 connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
                 preparedStatement = connection.prepareStatement("SELECT * FROM booking_rooms");
                 resultSet = preparedStatement.executeQuery();
@@ -150,7 +148,7 @@ public class DBRoomsBookingUtils{
                         psInsert = connection.prepareStatement("delete from booking_rooms where id = ? and number = ? and clientlogin = ?");
                         psInsert.setInt(1, Integer.parseInt(id));
                         psInsert.setInt(2, Integer.parseInt(number));
-                        psInsert.setString(3, userlogin);
+                        psInsert.setString(3, UserLoggedInController.LAST_USER_LOGIN);
                         psInsert.executeUpdate();
                         psInsert = connection.prepareStatement("update rooms set status = 'free' where hotel_id = ? and number = ?");
                         psInsert.setInt(1, Integer.parseInt(id));

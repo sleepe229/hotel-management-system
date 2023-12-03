@@ -27,6 +27,7 @@ public class HelloController implements Initializable{
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                UserLoggedInController.LAST_USER_LOGIN = tf_login.getText();
                 DBAuthUtils.logInUser(actionEvent, tf_login.getText(), tf_password.getText());
             }
         });
