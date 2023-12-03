@@ -61,8 +61,5 @@ public class AdminLoggedInController implements Initializable {
             }
         });
     }
-    public void setUserInformation(String username, String status){
-        //TODO: reset button from status
-    }
 
 }

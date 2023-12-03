@@ -14,17 +14,18 @@
             <Button fx:id="button_logout" layoutX="273.0" layoutY="355.0" mnemonicParsing="false" text="Logout" />
             <TableView fx:id="table_view" prefHeight="267.0" prefWidth="600.0">
               <columns>
-                <TableColumn fx:id="table_column_hotel_id" prefWidth="98.0" text="hotel id" />
-                <TableColumn fx:id="table_column_room_number" prefWidth="74.0" text="room number" />
-                  <TableColumn fx:id="table_column_client_fullname" minWidth="0.0" prefWidth="147.0" text="client full name" />
-                  <TableColumn fx:id="table_column_client_login" text="client login" />
-                  <TableColumn fx:id="table_column_client_phone_number" prefWidth="123.0" text="client phone number" />
-                  <TableColumn fx:id="table_column_client_email" prefWidth="77.0" text="client email" />
+                <TableColumn fx:id="table_column_hotel_id" prefWidth="51.0" text="hotel id" />
+                <TableColumn fx:id="table_column_room_number" prefWidth="68.0" text="room number" />
+                  <TableColumn fx:id="table_column_client_fullname" minWidth="0.0" prefWidth="69.0" text="client full name" />
+                  <TableColumn fx:id="table_column_client_login" prefWidth="114.0" text="client login" />
+                  <TableColumn fx:id="table_column_client_phone_number" prefWidth="101.0" text="client phone number" />
+                  <TableColumn fx:id="table_column_client_email" prefWidth="109.0" text="client email" />
+                  <TableColumn fx:id="table_column_room_status" prefWidth="75.0" text="status" />
               </columns>
             </TableView>
-            <TextField layoutX="41.0" layoutY="291.0" promptText="hotel id" />
-            <TextField layoutX="215.0" layoutY="291.0" promptText="room number" />
-            <TextField layoutX="410.0" layoutY="291.0" promptText="client login" />
+            <TextField fx:id="tf_hotel_id" layoutX="41.0" layoutY="291.0" promptText="hotel id" />
+            <TextField fx:id="tf_room_number" layoutX="215.0" layoutY="291.0" promptText="room number" />
+            <TextField fx:id="tf_client_login" layoutX="410.0" layoutY="291.0" promptText="client login" />
             <Button fx:id="button_accept_room" layoutX="176.0" layoutY="330.0" mnemonicParsing="false" text="Accept" />
             <Button fx:id="button_reject_room" layoutX="358.0" layoutY="330.0" mnemonicParsing="false" text="Reject" />
             <Button fx:id="button_reload_table" layoutX="515.0" layoutY="330.0" mnemonicParsing="false" text="reload" />
