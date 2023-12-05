@@ -1,5 +1,6 @@
 package com.example.trash;
 
+import com.example.trash.DBUtils.DBHotelUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class UserLoggedInController implements Initializable {
@@ -51,7 +51,15 @@ public class UserLoggedInController implements Initializable {
         button_room_found.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                reloadHotelList(actionEvent);
+                table_column_c1.setText("hotel_id");
+                table_column_c2.setText("type of room");
+                table_column_c3.setText("status");
+                table_column_c4.setText("number of room");
+                table_view.setItems(DBHotelUtils.founderRooms(actionEvent, tf_room_founder_id.getText()));
+                table_column_c1.setCellValueFactory(new PropertyValueFactory<>("id"));
+                table_column_c2.setCellValueFactory(new PropertyValueFactory<>("type"));
+                table_column_c3.setCellValueFactory(new PropertyValueFactory<>("status"));
+                table_column_c4.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));
             }
         });
         button_hotel_reload.setOnAction(new EventHandler<ActionEvent>() {

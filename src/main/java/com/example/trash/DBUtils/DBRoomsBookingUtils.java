@@ -1,5 +1,7 @@
-package com.example.trash;
+package com.example.trash.DBUtils;
 
+import com.example.trash.Models.Room;
+import com.example.trash.UserLoggedInController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -93,12 +95,6 @@ public class DBRoomsBookingUtils{
                 resultSet = preparedStatement.executeQuery();
                 BookedRoomsList.clear();
             }
-            if (!resultSet.isBeforeFirst()) {
-                System.out.println("Login not founded in the DB");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Provided credentials are incorrect");
-                alert.show();
-            } else {
                 while (resultSet.next()) {
                     BookedRoomsList.add(new Room(
                         resultSet.getInt("id"),
@@ -108,7 +104,7 @@ public class DBRoomsBookingUtils{
                         resultSet.getString("phonenumber"),
                         resultSet.getString("email"),
                         resultSet.getString("status")));
-                }
+
             }
 
         } catch (SQLException e) {
@@ -119,7 +115,7 @@ public class DBRoomsBookingUtils{
 
     public static void actionBookingRoom(ActionEvent actionEvent, String id, String number, String userlogin, String operation) {
         Connection connection = null;
-        PreparedStatement psInsert = null;
+        PreparedStatement psAction = null;
         PreparedStatement psCheckRoomExists = null;
         ResultSet resultSet = null;
         try {
@@ -133,27 +129,33 @@ public class DBRoomsBookingUtils{
                     if (!resultSet.isBeforeFirst()) {
                         System.out.println("Room already not exists");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Rechange data. U cant use that.");
+                        alert.setContentText("Rechange data. You cant use that.");
                         alert.show();
                     } else {
-                        psInsert = connection.prepareStatement("update booking_rooms set status = 'ready_to_buy' where id = ? and roomnumber = ? and clientlogin = ?");
-                        psInsert.setInt(1, Integer.parseInt(id));
-                        psInsert.setInt(2, Integer.parseInt(number));
-                        psInsert.setString(3, userlogin);
-                        psInsert.executeUpdate();
+                        psAction = connection.prepareStatement("update booking_rooms set status = 'ready_to_buy' where id = ? and roomnumber = ? and clientlogin = ?");
+                        psAction.setInt(1, Integer.parseInt(id));
+                        psAction.setInt(2, Integer.parseInt(number));
+                        psAction.setString(3, userlogin);
+                        psAction.executeUpdate();
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setContentText("Data has been updated");
+                        alert.show();
                     }
                 }
                 case "reject" -> {
                     if (resultSet.isBeforeFirst()) {
-                        psInsert = connection.prepareStatement("delete from booking_rooms where id = ? and number = ? and clientlogin = ?");
-                        psInsert.setInt(1, Integer.parseInt(id));
-                        psInsert.setInt(2, Integer.parseInt(number));
-                        psInsert.setString(3, UserLoggedInController.LAST_USER_LOGIN);
-                        psInsert.executeUpdate();
-                        psInsert = connection.prepareStatement("update rooms set status = 'free' where hotel_id = ? and number = ?");
-                        psInsert.setInt(1, Integer.parseInt(id));
-                        psInsert.setInt(2, Integer.parseInt(number));
-                        psInsert.executeUpdate();
+                        psAction = connection.prepareStatement("delete from booking_rooms where id = ? and number = ? and clientlogin = ?");
+                        psAction.setInt(1, Integer.parseInt(id));
+                        psAction.setInt(2, Integer.parseInt(number));
+                        psAction.setString(3, UserLoggedInController.LAST_USER_LOGIN);
+                        psAction.executeUpdate();
+                        psAction = connection.prepareStatement("update rooms set status = 'free' where hotel_id = ? and number = ?");
+                        psAction.setInt(1, Integer.parseInt(id));
+                        psAction.setInt(2, Integer.parseInt(number));
+                        psAction.executeUpdate();
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setContentText("Data has been updated");
+                        alert.show();
                     } else {
                         System.out.println("Room already not exists");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -179,9 +181,9 @@ public class DBRoomsBookingUtils{
                     e.printStackTrace();
                 }
             }
-            if (psInsert != null) {
+            if (psAction != null) {
                 try {
-                    psInsert.close();
+                    psAction.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

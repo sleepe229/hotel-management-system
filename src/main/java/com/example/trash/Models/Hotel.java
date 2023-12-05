@@ -1,4 +1,4 @@
-package com.example.trash;
+package com.example.trash.Models;
 
 public class Hotel {
     int id;
@@ -44,6 +44,5 @@ public class Hotel {
     public void setLocation(String location) {
         this.location = location;
     }
-
 
 }

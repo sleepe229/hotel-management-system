@@ -1,4 +1,4 @@
-package com.example.trash;
+package com.example.trash.Models;
 
 public class Room {
     int id;
@@ -10,12 +10,6 @@ public class Room {
     String phonenumber;
     String email;
 
-    public Room(int id, String type, String status, int roomnumber) {
-        this.id = id;
-        this.type = type;
-        this.status = status;
-        this.roomnumber = roomnumber;
-    }
 
     public Room(int id, int roomnumber, String fullname, String clientlogin, String phonenumber, String email, String status) {
         this.id = id;

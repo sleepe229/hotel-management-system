@@ -1,5 +1,7 @@
-package com.example.trash;
+package com.example.trash.Controllers;
 
+import com.example.trash.DBAuthUtils;
+import com.example.trash.UserLoggedInController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

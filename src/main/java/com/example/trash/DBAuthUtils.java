@@ -39,11 +39,14 @@ public class DBAuthUtils {
         stage.show();
     }
 
-    public static void signUpUser(ActionEvent actionEvent, String login, String password, String status){
+    public static void signUpUser(ActionEvent actionEvent, String login, String password){
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
         ResultSet resultSet = null;
+        if (isEmptyFields(login, password)){
+            return;
+        }
 
         try{
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -102,6 +105,9 @@ public class DBAuthUtils {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        if (isEmptyFields(login, password)){
+            return;
+        }
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             preparedStatement = connection.prepareStatement("SELECT password, status FROM accounts WHERE login = ?");
@@ -131,5 +137,15 @@ public class DBAuthUtils {
         } catch (SQLException e){
             e.printStackTrace();
         }
+    }
+    static boolean isEmptyFields(String login, String password){
+        if (login.isEmpty() || password.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Fields must be filled in");
+            alert.setContentText("Enter login and password");
+            alert.showAndWait();
+            return true;
+        }
+        return false;
     }
 }

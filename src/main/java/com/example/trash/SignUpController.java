@@ -21,7 +21,7 @@ public class SignUpController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 UserLoggedInController.LAST_USER_LOGIN = tf_login.getText();
                 if (!tf_login.getText().trim().isEmpty() &&!tf_password.getText().trim().isEmpty()){
-                    DBAuthUtils.signUpUser(actionEvent, tf_login.getText(), tf_password.getText(), "user");
+                    DBAuthUtils.signUpUser(actionEvent, tf_login.getText(), tf_password.getText());
                 } else{
                     System.out.println("Please fill in all information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
