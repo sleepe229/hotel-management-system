@@ -4,32 +4,54 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.HotelLoggedInController">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="button_logout" layoutX="273.0" layoutY="355.0" mnemonicParsing="false" text="Logout" />
-            <TableView fx:id="table_view" prefHeight="267.0" prefWidth="600.0">
-              <columns>
-                <TableColumn fx:id="table_column_hotel_id" prefWidth="51.0" text="hotel id" />
-                <TableColumn fx:id="table_column_room_number" prefWidth="68.0" text="room number" />
-                  <TableColumn fx:id="table_column_client_fullname" minWidth="0.0" prefWidth="69.0" text="client full name" />
-                  <TableColumn fx:id="table_column_client_login" prefWidth="114.0" text="client login" />
-                  <TableColumn fx:id="table_column_client_phone_number" prefWidth="101.0" text="client phone number" />
-                  <TableColumn fx:id="table_column_client_email" prefWidth="109.0" text="client email" />
-                  <TableColumn fx:id="table_column_room_status" prefWidth="75.0" text="status" />
-              </columns>
-            </TableView>
-            <TextField fx:id="tf_hotel_id" layoutX="41.0" layoutY="291.0" promptText="hotel id" />
-            <TextField fx:id="tf_room_number" layoutX="215.0" layoutY="291.0" promptText="room number" />
-            <TextField fx:id="tf_client_login" layoutX="410.0" layoutY="291.0" promptText="client login" />
-            <Button fx:id="button_accept_room" layoutX="176.0" layoutY="330.0" mnemonicParsing="false" text="Accept" />
-            <Button fx:id="button_reject_room" layoutX="358.0" layoutY="330.0" mnemonicParsing="false" text="Reject" />
-            <Button fx:id="button_reload_table" layoutX="515.0" layoutY="330.0" mnemonicParsing="false" text="reload" />
-         </children>
-      </AnchorPane>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.HotelLoggedInController">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ADD8E6;" BorderPane.alignment="CENTER">
+            <children>
+                <TableView fx:id="table_view" prefHeight="267.0" prefWidth="600.0" style="-fx-background-color: white;">
+                    <columns>
+                        <TableColumn fx:id="table_column_hotel_id" prefWidth="51.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="hotel id" />
+                        <TableColumn fx:id="table_column_room_number" prefWidth="83.199951171875" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="room number" />
+                        <TableColumn fx:id="table_column_client_fullname" minWidth="0.0" prefWidth="100.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client full name" />
+                        <TableColumn fx:id="table_column_client_login" prefWidth="69.5999755859375" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client login" />
+                        <TableColumn fx:id="table_column_client_phone_number" prefWidth="132.800048828125" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client phone number" />
+                        <TableColumn fx:id="table_column_client_email" prefWidth="78.39996337890625" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client email" />
+                        <TableColumn fx:id="table_column_room_status" prefWidth="75.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="status" />
+                    </columns>
+                </TableView>
+                <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="265.0" AnchorPane.bottomAnchor="-263.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <image>
+                        <Image url="@pictures/blue-flowers.jpg" />
+                    </image>
+                </ImageView>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b3" height="136.0" layoutY="217.0" stroke="BLACK" strokeType="INSIDE" width="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                <Button fx:id="button_logout" layoutX="502.0" layoutY="359.0" mnemonicParsing="false" style="-fx-background-color: #B0C4DE; -fx-background-radius: 30;" text="Logout">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <TextField fx:id="tf_hotel_id" layoutX="35.0" layoutY="284.0" promptText="hotel id" style="-fx-background-color: F7F6F2; -fx-background-radius: 30;" />
+                <TextField fx:id="tf_room_number" layoutX="225.0" layoutY="284.0" promptText="room number" style="-fx-background-color: F7F6F2; -fx-background-radius: 30;" />
+                <TextField fx:id="tf_client_login" layoutX="407.0" layoutY="284.0" promptText="client login" style="-fx-background-color: F7F6F2; -fx-background-radius: 30;" />
+                <Button fx:id="button_accept_room" layoutX="197.0" layoutY="333.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Accept">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <Button fx:id="button_reject_room" layoutX="272.0" layoutY="333.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Reject">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <Button fx:id="button_reload_table" layoutX="347.0" layoutY="333.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="56.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Reload">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+            </children>
+        </AnchorPane>
+    </center>
 </BorderPane>

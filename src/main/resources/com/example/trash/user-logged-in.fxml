@@ -4,33 +4,58 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.UserLoggedInController">
-   <left>
-      <AnchorPane prefHeight="400.0" prefWidth="602.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="button_logout" layoutX="346.0" layoutY="350.0" mnemonicParsing="false" text="Logout" />
-            <TableView fx:id="table_view" layoutX="73.0" layoutY="74.0" prefHeight="184.0" prefWidth="437.0">
-              <columns>
-                <TableColumn fx:id="table_column_c1" prefWidth="105.0" text="id" />
-                <TableColumn fx:id="table_column_c2" prefWidth="106.0" text="name" />
-                  <TableColumn fx:id="table_column_c3" prefWidth="126.0" text="stars" />
-                  <TableColumn fx:id="table_column_c4" prefWidth="101.0" text="location" />
-              </columns>
-            </TableView>
-            <TextField fx:id="tf_room_founder_id" layoutX="87.0" layoutY="26.0" promptText="rooms by hotel id" />
-            <Button fx:id="button_room_found" layoutX="260.0" layoutY="26.0" mnemonicParsing="false" text="found" />
-            <Button fx:id="button_book_room" layoutX="197.0" layoutY="350.0" mnemonicParsing="false" text="book" />
-            <TextField fx:id="tf_hotel_id" layoutX="48.0" layoutY="282.0" promptText="hotel id" />
-            <TextField fx:id="tf_room_number" layoutX="210.0" layoutY="281.0" promptText="room number" />
-            <Button fx:id="button_booked_rooms" layoutX="479.0" layoutY="26.0" mnemonicParsing="false" text="booked rooms" />
-            <Button fx:id="button_hotel_reload" layoutX="346.0" layoutY="26.0" mnemonicParsing="false" text="hotel list reaload" />
-            <TextField fx:id="tf_client_username" layoutX="210.0" layoutY="316.0" promptText="full name" />
-            <TextField fx:id="tf_client_email" layoutX="377.0" layoutY="316.0" promptText="email" />
-            <TextField fx:id="tf_client_phone_number" layoutX="377.0" layoutY="283.0" promptText="phone number" />
-         </children>
-      </AnchorPane>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.UserLoggedInController">
+    <left>
+        <AnchorPane prefHeight="400.0" prefWidth="602.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="445.0" fitWidth="600.0" layoutY="-45.0">
+                    <image>
+                        <Image url="@pictures/blue-flowers.jpg" />
+                    </image>
+                </ImageView>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="435.0" layoutX="-6.0" layoutY="-34.0" stroke="BLACK" strokeType="INSIDE" width="607.0" />
+                <Button fx:id="button_logout" layoutX="139.0" layoutY="350.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Logout">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <TableView fx:id="table_view" layoutX="49.0" layoutY="74.0" prefHeight="184.0" prefWidth="504.0">
+                    <columns>
+                        <TableColumn fx:id="table_column_c1" prefWidth="92.79993438720703" style="-fx-background-color: #ADD8E6;" text="id" />
+                        <TableColumn fx:id="table_column_c2" prefWidth="160.00006103515625" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="name" />
+                        <TableColumn fx:id="table_column_c3" prefWidth="100.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="stars" />
+                        <TableColumn fx:id="table_column_c4" prefWidth="149.60000610351562" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="location" />
+                    </columns>
+                </TableView>
+                <TextField fx:id="tf_room_founder_id" layoutX="51.0" layoutY="26.0" prefHeight="26.0" prefWidth="158.0" promptText="rooms by hotel id" style="-fx-background-radius: 10; -fx-background-color: F7F6F2;" />
+                <Button fx:id="button_room_found" layoutX="250.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Find">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <Button fx:id="button_book_room" layoutX="51.0" layoutY="350.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Book">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <TextField fx:id="tf_hotel_id" layoutX="49.0" layoutY="282.0" promptText="hotel id" style="-fx-background-radius: 10; -fx-background-color: F7F6F2;" />
+                <TextField fx:id="tf_room_number" layoutX="226.0" layoutY="282.0" promptText="room number" style="-fx-background-radius: 10; -fx-background-color: F7F6F2;" />
+                <Button fx:id="button_booked_rooms" layoutX="476.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="My rooms">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <Button fx:id="button_hotel_reload" layoutX="331.0" layoutY="26.0" mnemonicParsing="false" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Hotel list reaload">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <TextField fx:id="tf_client_username" layoutX="226.0" layoutY="316.0" promptText="full name" style="-fx-background-radius: 10; -fx-background-color: F7F6F2;" />
+                <TextField fx:id="tf_client_email" layoutX="404.0" layoutY="316.0" promptText="email" style="-fx-background-radius: 10; -fx-background-color: F7F6F2;" />
+                <TextField fx:id="tf_client_phone_number" layoutX="404.0" layoutY="282.0" promptText="phone number" style="-fx-background-radius: 10; -fx-background-color: F7F6F2;" />
+            </children>
+        </AnchorPane>
+    </left>
 </BorderPane>
