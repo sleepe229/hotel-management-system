@@ -4,23 +4,39 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.RoomBookingController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.RoomBookingController">
    <children>
-      <TableView fx:id="table_view_booked_number" layoutY="74.0" prefHeight="200.0" prefWidth="600.0">
+      <ImageView fitHeight="473.0" fitWidth="600.0" layoutY="-73.0">
+         <image>
+            <Image url="@pictures/blue-flowers.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b1" height="401.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <TableView fx:id="table_view_booked_number" layoutY="36.0" prefHeight="238.0" prefWidth="600.0">
         <columns>
-            <TableColumn fx:id="table_column_hotel_id" prefWidth="49.0" text="hotel id" />
-            <TableColumn fx:id="table_column_room_number" prefWidth="77.0" text="room number" />
-            <TableColumn fx:id="table_column_fullname" prefWidth="183.0" text="full name" />
-            <TableColumn fx:id="table_column_phone_number" prefWidth="102.0" text="phone number" />
-            <TableColumn fx:id="table_column_email" text="email" />
-            <TableColumn fx:id="table_column_room_status" prefWidth="108.0" text="status" />
+            <TableColumn fx:id="table_column_hotel_id" prefWidth="56.00006103515625" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="hotel id" />
+            <TableColumn fx:id="table_column_room_number" prefWidth="93.60003662109375" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="room number" />
+            <TableColumn fx:id="table_column_fullname" prefWidth="160.79998779296875" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="full name" />
+            <TableColumn fx:id="table_column_phone_number" prefWidth="102.0" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="phone number" />
+            <TableColumn fx:id="table_column_email" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="email" />
+            <TableColumn fx:id="table_column_room_status" prefWidth="108.0" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="status" />
         </columns>
       </TableView>
-      <TextField fx:id="tf_hotel_id" layoutX="73.0" layoutY="298.0" promptText="hotel id" />
-      <TextField fx:id="tf_room_number" layoutX="352.0" layoutY="298.0" promptText="room number" />
-      <Button fx:id="button_buy_number" layoutX="260.0" layoutY="338.0" mnemonicParsing="false" text="buy number" />
-      <Button fx:id="button_back" layoutX="501.0" layoutY="338.0" mnemonicParsing="false" text="back" />
+      <TextField fx:id="tf_hotel_id" layoutX="87.0" layoutY="298.0" promptText="hotel id" style="-fx-background-radius: 10;" />
+      <TextField fx:id="tf_room_number" layoutX="87.0" layoutY="343.0" promptText="room number" style="-fx-background-radius: 10;" />
+      <Button fx:id="button_buy_number" layoutX="289.0" layoutY="324.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Buy number">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="button_back" layoutX="433.0" layoutY="324.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-radius: 30; -fx-background-color: #B0C4DE;" text="Back">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>
