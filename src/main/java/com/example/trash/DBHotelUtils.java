@@ -94,8 +94,9 @@ public class DBHotelUtils {
         ResultSet resultSet = null;
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            psCheckRoomExists = connection.prepareStatement("SELECT * FROM rooms WHERE id = ?");
+            psCheckRoomExists = connection.prepareStatement("SELECT * FROM rooms WHERE hotel_id = ? and number = ?");
             psCheckRoomExists.setInt(1, Integer.parseInt(id));
+            psCheckRoomExists.setInt(2, Integer.parseInt(number));
             resultSet = psCheckRoomExists.executeQuery();
 
             switch (operation) {
@@ -106,7 +107,7 @@ public class DBHotelUtils {
                         alert.setContentText("Rechange data. U cant use that.");
                         alert.show();
                     } else {
-                        psInsert = connection.prepareStatement("INSERT INTO rooms (id, type, status, number) VALUES (?, ?, ?, ?)");
+                        psInsert = connection.prepareStatement("INSERT INTO rooms (hotel_id, type, status, number) VALUES (?, ?, ?, ?)");
                         psInsert.setInt(1, Integer.parseInt(id));
                         psInsert.setString(2, type);
                         psInsert.setString(3, status);
@@ -116,7 +117,7 @@ public class DBHotelUtils {
                 }
                 case "delete" -> {
                     if (resultSet.isBeforeFirst()) {
-                        psInsert = connection.prepareStatement("DELETE FROM rooms WHERE id = ? AND number = ?");
+                        psInsert = connection.prepareStatement("DELETE FROM rooms WHERE hotel_id = ? AND number = ?");
                         psInsert.setInt(1, Integer.parseInt(id));
                         psInsert.setInt(2, Integer.parseInt(number));
                         psInsert.executeUpdate();
@@ -247,9 +248,9 @@ public class DBHotelUtils {
             psInsert.setString(6, client_login);
             psInsert.executeUpdate();
 
-            psInsert = connection.prepareStatement("update rooms set status = 'ordered' where id = ?, and number = ?)");
+            psInsert = connection.prepareStatement("update rooms set status = 'ordered' where hotel_id = ? and number = ?");
             psInsert.setInt(1, Integer.parseInt(hotel_id));
-            psInsert.setString(2, room_number);
+            psInsert.setInt(2, Integer.parseInt(room_number));
             psInsert.executeUpdate();
 
         } catch (SQLException e) {

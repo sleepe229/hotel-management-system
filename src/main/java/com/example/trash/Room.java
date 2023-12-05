@@ -4,23 +4,23 @@ public class Room {
     int id;
     String type;
     String status;
-    int number;
+    int roomnumber;
     String clientlogin;
     String fullname;
     String phonenumber;
     String email;
 
-    public Room(int id, String type, String status, int number) {
+    public Room(int id, String type, String status, int roomnumber) {
         this.id = id;
         this.type = type;
         this.status = status;
-        this.number = number;
+        this.roomnumber = roomnumber;
     }
 
-    public Room(int id, int number, String fullname, String clientlogin, String phonenumber, String email, String status) {
+    public Room(int id, int roomnumber, String fullname, String clientlogin, String phonenumber, String email, String status) {
         this.id = id;
         this.status = status;
-        this.number = number;
+        this.roomnumber = roomnumber;
         this.fullname = fullname;
         this.clientlogin = clientlogin;
         this.phonenumber = phonenumber;
@@ -83,11 +83,11 @@ public class Room {
         this.email = email;
     }
 
-    public int getNumber() {
-        return number;
+    public int getRoomnumber() {
+        return roomnumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setRoomnumber(int number) {
+        this.roomnumber = number;
     }
 }

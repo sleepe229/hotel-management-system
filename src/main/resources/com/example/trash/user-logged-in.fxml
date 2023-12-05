@@ -30,7 +30,6 @@
             <TextField fx:id="tf_client_username" layoutX="210.0" layoutY="316.0" promptText="full name" />
             <TextField fx:id="tf_client_email" layoutX="377.0" layoutY="316.0" promptText="email" />
             <TextField fx:id="tf_client_phone_number" layoutX="377.0" layoutY="283.0" promptText="phone number" />
-            <TextField fx:id="tf_client_login" layoutX="48.0" layoutY="316.0" promptText="ur login" />
          </children>
       </AnchorPane>
    </left>

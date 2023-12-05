@@ -19,6 +19,7 @@ public class SignUpController implements Initializable {
         button_sign_up.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                UserLoggedInController.LAST_USER_LOGIN = tf_login.getText();
                 if (!tf_login.getText().trim().isEmpty() &&!tf_password.getText().trim().isEmpty()){
                     DBAuthUtils.signUpUser(actionEvent, tf_login.getText(), tf_password.getText(), "user");
                 } else{

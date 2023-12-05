@@ -14,19 +14,19 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trash.SignUpController">
    <top>
-   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-      <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+         <children>
             <ImageView fitHeight="496.0" fitWidth="687.0" layoutX="-23.0" layoutY="-12.0">
                <image>
                   <Image url="@pictures/Birds-n-flowers.jpg" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#222426" height="400.0" layoutX="20.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="230.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="416.0" AnchorPane.topAnchor="0.0" />
-         <Button fx:id="button_sign_up" layoutX="116.0" layoutY="200.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="63.0" style="-fx-background-radius: 30; -fx-background-color: FE1907;" text="Sign Up" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="205.0" />
-         <TextField fx:id="tf_login" layoutX="61.0" layoutY="102.0" promptText="Login" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="438.6" />
-         <PasswordField fx:id="tf_password" layoutX="61.0" layoutY="146.0" promptText="Password" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="438.6" />
-         <Button fx:id="button_log_in" layoutX="121.0" layoutY="296.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" text="Login!" AnchorPane.bottomAnchor="161.60000000000002" AnchorPane.leftAnchor="121.0" />
-         <Label layoutX="74.0" layoutY="254.0" text="Do u have account?" textFill="#f7f6f2" AnchorPane.leftAnchor="85.0">
+            <Button fx:id="button_sign_up" layoutX="116.0" layoutY="200.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="63.0" style="-fx-background-radius: 30; -fx-background-color: FE1907;" text="Sign Up" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="205.0" />
+            <TextField fx:id="tf_login" layoutX="61.0" layoutY="102.0" promptText="Login" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="438.6" />
+            <PasswordField fx:id="tf_password" layoutX="61.0" layoutY="146.0" promptText="Password" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="438.6" />
+            <Button fx:id="button_log_in" layoutX="121.0" layoutY="296.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-radius: 30; -fx-background-color: F7F6F2;" text="Login!" AnchorPane.bottomAnchor="161.60000000000002" AnchorPane.leftAnchor="121.0" />
+            <Label layoutX="74.0" layoutY="254.0" text="Do u have account?" textFill="#f7f6f2" AnchorPane.leftAnchor="85.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Label>
@@ -51,7 +51,7 @@
                   <Font name="System Bold Italic" size="24.0" />
                </font>
             </Text>
-      </children>
-   </AnchorPane>
+         </children>
+      </AnchorPane>
    </top>
 </BorderPane>
