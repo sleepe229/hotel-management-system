@@ -39,7 +39,11 @@ public class DBLoginExistUser {
                             case "admin" -> changeScene(actionEvent, "/com/example/trash/admin-logged-in.fxml", "admin", login, retrievedStatus);
                         }
                     }else{
-                        System.out.println("Password");
+                        System.out.println("Wrong password");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setHeaderText("Wrong login or password.");
+                        alert.setContentText("Try again.");
+                        alert.show();
                     }
                 }
             }
