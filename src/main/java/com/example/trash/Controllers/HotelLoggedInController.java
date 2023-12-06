@@ -1,7 +1,8 @@
 package com.example.trash.Controllers;
 
-import com.example.trash.DBUtils.DBAuthUtils;
-import com.example.trash.DBUtils.DBRoomsBookingUtils;
+import com.example.trash.DBUtils.DBBookedRoomAction;
+import com.example.trash.DBUtils.DBBookedRoomFinder;
+import com.example.trash.DBUtils.OtherUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,26 +42,26 @@ public class HotelLoggedInController implements Initializable {
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/hello-view.fxml", "Log in!", null, null);
+                OtherUtils.changeScene(actionEvent, "/com/example/trash/hello-view.fxml", "Log in!", null, null);
             }
         });
 
         button_accept_room.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBRoomsBookingUtils.actionBookingRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_login.getText(), "accept");
+                DBBookedRoomAction.actionBookingRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_login.getText(), "accept");
             }
         });
         button_reject_room.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBRoomsBookingUtils.actionBookingRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_login.getText(), "reject");
+                DBBookedRoomAction.actionBookingRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_login.getText(), "reject");
             }
         });
     }
 
     void reloadTable(ActionEvent actionEvent){
-        table_view.setItems(DBRoomsBookingUtils.founderBookedRooms(actionEvent, null));
+        table_view.setItems(DBBookedRoomFinder.finderBookedRooms(actionEvent, null));
         table_column_hotel_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         table_column_room_number.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));
         table_column_client_fullname.setCellValueFactory(new PropertyValueFactory<>("fullname"));

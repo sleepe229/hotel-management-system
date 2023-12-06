@@ -1,7 +1,8 @@
 package com.example.trash.Controllers;
 
-import com.example.trash.DBUtils.DBAuthUtils;
-import com.example.trash.DBUtils.DBHotelUtils;
+import com.example.trash.DBUtils.DBHotelAction;
+import com.example.trash.DBUtils.DBRoomAction;
+import com.example.trash.DBUtils.OtherUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,31 +36,31 @@ public class AdminLoggedInController implements Initializable {
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/hello-view.fxml", "Log in!", null, null);
+                OtherUtils.changeScene(actionEvent, "/com/example/trash/hello-view.fxml", "Log in!", null, null);
             }
         });
         button_add_hotel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBHotelUtils.actionHotel(actionEvent, tf_hotel_id.getText(), tf_hotel_name.getText(), tf_hotel_stars.getText(), tf_hotel_location.getText(), "add");
+                DBHotelAction.actionHotel(actionEvent, tf_hotel_id.getText(), tf_hotel_name.getText(), tf_hotel_stars.getText(), tf_hotel_location.getText(), "add");
             }
         });
         button_remove_hotel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBHotelUtils.actionHotel(actionEvent, tf_hotel_id.getText(), tf_hotel_name.getText(), tf_hotel_stars.getText(), tf_hotel_location.getText(), "delete");
+                DBHotelAction.actionHotel(actionEvent, tf_hotel_id.getText(), tf_hotel_name.getText(), tf_hotel_stars.getText(), tf_hotel_location.getText(), "delete");
             }
         });
         button_add_room.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBHotelUtils.actionRoom(actionEvent, tf_hotel_for_room_id.getText(), tf_room_type.getText(), tf_room_status.getText(), tf_room_number.getText(), "add");
+                DBRoomAction.actionRoom(actionEvent, tf_hotel_for_room_id.getText(), tf_room_type.getText(), tf_room_status.getText(), tf_room_number.getText(), "add");
             }
         });
         button_remove_room.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBHotelUtils.actionRoom(actionEvent, tf_hotel_for_room_id.getText(), tf_room_type.getText(), tf_room_status.getText(), tf_room_number.getText(), "delete");
+                DBRoomAction.actionRoom(actionEvent, tf_hotel_for_room_id.getText(), tf_room_type.getText(), tf_room_status.getText(), tf_room_number.getText(), "delete");
             }
         });
     }

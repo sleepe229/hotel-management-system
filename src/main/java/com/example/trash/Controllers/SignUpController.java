@@ -1,6 +1,7 @@
 package com.example.trash.Controllers;
 
-import com.example.trash.DBUtils.DBAuthUtils;
+import com.example.trash.DBUtils.OtherUtils;
+import com.example.trash.DBUtils.DBSignUpClient;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -22,7 +23,7 @@ public class SignUpController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 UserLoggedInController.LAST_USER_LOGIN = tf_login.getText();
                 if (!tf_login.getText().trim().isEmpty() &&!tf_password.getText().trim().isEmpty()){
-                    DBAuthUtils.signUpUser(actionEvent, tf_login.getText(), tf_password.getText());
+                    DBSignUpClient.signUpUser(actionEvent, tf_login.getText(), tf_password.getText());
                 } else{
                     System.out.println("Please fill in all information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -35,7 +36,7 @@ public class SignUpController implements Initializable {
         button_log_in.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/hello-view.fxml", "Log in!", null, null);
+                OtherUtils.changeScene(actionEvent, "/com/example/trash/hello-view.fxml", "Log in!", null, null);
             }
         });
 

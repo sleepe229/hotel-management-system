@@ -10,6 +10,5 @@ module com.example.agpsdesktopapp {
     opens com.example.trash.Models to javafx.fxml;
     exports com.example.trash.Controllers;
     opens com.example.trash.Controllers to javafx.fxml;
-    exports com.example.trash;
     opens com.example.trash to javafx.fxml;
 }

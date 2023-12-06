@@ -1,7 +1,8 @@
 package com.example.trash.Controllers;
 
-import com.example.trash.DBUtils.DBAuthUtils;
-import com.example.trash.DBUtils.DBRoomsBookingUtils;
+import com.example.trash.DBUtils.DBBookedRoomFinder;
+import com.example.trash.DBUtils.DBBuyAcceptedRoom;
+import com.example.trash.DBUtils.OtherUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -38,13 +39,13 @@ public class RoomBookingController implements Initializable {
         button_back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/user-logged-in.fxml", "user", UserLoggedInController.LAST_USER_LOGIN, "user");
+                OtherUtils.changeScene(actionEvent, "/com/example/trash/user-logged-in.fxml", "user", UserLoggedInController.LAST_USER_LOGIN, "user");
             }
         });
         button_buy_number.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBRoomsBookingUtils.buyAcceptedRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText());
+                DBBuyAcceptedRoom.buyAcceptedRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText());
             }
         });
     }
@@ -55,7 +56,7 @@ public class RoomBookingController implements Initializable {
         table_column_phone_number.setText("number");
         table_column_email.setText("email");
         table_column_room_status.setText("room status");
-        table_view_booked_number.setItems(DBRoomsBookingUtils.founderBookedRooms(actionEvent, UserLoggedInController.LAST_USER_LOGIN));
+        table_view_booked_number.setItems(DBBookedRoomFinder.finderBookedRooms(actionEvent, UserLoggedInController.LAST_USER_LOGIN));
         table_column_hotel_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         table_column_room_number.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));
         table_column_fullname.setCellValueFactory(new PropertyValueFactory<>("fullname"));
