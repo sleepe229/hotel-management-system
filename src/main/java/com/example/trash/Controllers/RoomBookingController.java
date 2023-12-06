@@ -1,5 +1,6 @@
-package com.example.trash;
+package com.example.trash.Controllers;
 
+import com.example.trash.DBUtils.DBAuthUtils;
 import com.example.trash.DBUtils.DBRoomsBookingUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,7 +38,7 @@ public class RoomBookingController implements Initializable {
         button_back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "user-logged-in.fxml", "user", UserLoggedInController.LAST_USER_LOGIN, "user");
+                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/user-logged-in.fxml", "user", UserLoggedInController.LAST_USER_LOGIN, "user");
             }
         });
         button_buy_number.setOnAction(new EventHandler<ActionEvent>() {

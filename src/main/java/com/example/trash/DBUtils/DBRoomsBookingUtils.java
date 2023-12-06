@@ -1,7 +1,7 @@
 package com.example.trash.DBUtils;
 
 import com.example.trash.Models.Room;
-import com.example.trash.UserLoggedInController;
+import com.example.trash.Controllers.UserLoggedInController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

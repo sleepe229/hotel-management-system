@@ -1,5 +1,6 @@
-package com.example.trash;
+package com.example.trash.Controllers;
 
+import com.example.trash.DBUtils.DBAuthUtils;
 import com.example.trash.DBUtils.DBHotelUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,7 +22,7 @@ public class UserLoggedInController implements Initializable {
     public TableColumn<String, String> table_column_c3;
     public TableColumn<String, String> table_column_c4;
     public TextField tf_room_founder_id;
-    public Button button_room_found;
+    public Button button_room_find;
     public Button button_book_room;
     public TextField tf_hotel_id;
     public TextField tf_room_number;
@@ -45,21 +46,23 @@ public class UserLoggedInController implements Initializable {
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "hello-view.fxml", "Log in!", null, null);
+                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/hello-view.fxml", "Log in!", null, null);
             }
         });
-        button_room_found.setOnAction(new EventHandler<ActionEvent>() {
+        button_room_find.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                table_column_c1.setText("hotel_id");
-                table_column_c2.setText("type of room");
-                table_column_c3.setText("status");
-                table_column_c4.setText("number of room");
-                table_view.setItems(DBHotelUtils.founderRooms(actionEvent, tf_room_founder_id.getText()));
-                table_column_c1.setCellValueFactory(new PropertyValueFactory<>("id"));
-                table_column_c2.setCellValueFactory(new PropertyValueFactory<>("type"));
-                table_column_c3.setCellValueFactory(new PropertyValueFactory<>("status"));
-                table_column_c4.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));
+                if (!DBHotelUtils.isEmptyField(tf_room_founder_id.getText())) {
+                    table_column_c1.setText("hotel_id");
+                    table_column_c2.setText("type of room");
+                    table_column_c3.setText("status");
+                    table_column_c4.setText("number of room");
+                    table_view.setItems(DBHotelUtils.founderRooms(actionEvent, tf_room_founder_id.getText()));
+                    table_column_c1.setCellValueFactory(new PropertyValueFactory<>("id"));
+                    table_column_c2.setCellValueFactory(new PropertyValueFactory<>("type"));
+                    table_column_c3.setCellValueFactory(new PropertyValueFactory<>("status"));
+                    table_column_c4.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));
+                }
             }
         });
         button_hotel_reload.setOnAction(new EventHandler<ActionEvent>() {
@@ -85,7 +88,7 @@ public class UserLoggedInController implements Initializable {
         button_booked_rooms.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "user-booked.fxml", "booked room", null, null);
+                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/user-booked.fxml", "booked room", null, null);
             }
         });
     }

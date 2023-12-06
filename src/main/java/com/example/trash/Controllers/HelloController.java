@@ -1,7 +1,6 @@
 package com.example.trash.Controllers;
 
-import com.example.trash.DBAuthUtils;
-import com.example.trash.UserLoggedInController;
+import com.example.trash.DBUtils.DBAuthUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -36,7 +35,7 @@ public class HelloController implements Initializable{
         button_sign_up.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "sign-up.fxml", "Sign Up!", null, null);
+                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/sign-up.fxml", "Sign Up!", null, null);
             }
         });
     }

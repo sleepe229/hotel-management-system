@@ -337,11 +337,10 @@ public class DBHotelUtils {
         }
         return false;
     }
-    static boolean isEmptyField(String id){
+    public static boolean isEmptyField(String id){
         if (id.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Fields must be filled in");
-            alert.setContentText("Enter login and password");
+            alert.setHeaderText("Field must be filled in");
             alert.showAndWait();
             return true;
         }

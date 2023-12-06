@@ -1,5 +1,6 @@
-package com.example.trash;
+package com.example.trash.Controllers;
 
+import com.example.trash.DBUtils.DBAuthUtils;
 import com.example.trash.DBUtils.DBRoomsBookingUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -40,7 +41,7 @@ public class HotelLoggedInController implements Initializable {
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBAuthUtils.changeScene(actionEvent, "hello-view.fxml", "Log in!", null, null);
+                DBAuthUtils.changeScene(actionEvent, "/com/example/trash/hello-view.fxml", "Log in!", null, null);
             }
         });
 

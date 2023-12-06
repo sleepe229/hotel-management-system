@@ -1,4 +1,4 @@
-package com.example.trash;
+package com.example.trash.DBUtils;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,6 @@ public class DBAuthUtils {
             try {
                 FXMLLoader loader = new FXMLLoader(DBAuthUtils.class.getResource(fxmlFile));
                 root = loader.load();
-                var loggedInController = loader.getController();
             } catch (IOException e){
                 e.printStackTrace();
             }
@@ -125,9 +124,9 @@ public class DBAuthUtils {
                     String retrievedStatus = resultSet.getString("status");
                     if (retrievedPassword.equals(password)){
                         switch (retrievedStatus){
-                            case "user" -> changeScene(actionEvent, "user-logged-in.fxml", "user", login, retrievedStatus);
-                            case "hotel" -> changeScene(actionEvent, "hotel-logged-in.fxml", "hotel", login, retrievedStatus);
-                            case "admin" -> changeScene(actionEvent, "admin-logged-in.fxml", "admin", login, retrievedStatus);
+                            case "user" -> changeScene(actionEvent, "/com/example/trash/user-logged-in.fxml", "user", login, retrievedStatus);
+                            case "hotel" -> changeScene(actionEvent, "/com/example/trash/hotel-logged-in.fxml", "hotel", login, retrievedStatus);
+                            case "admin" -> changeScene(actionEvent, "/com/example/trash/admin-logged-in.fxml", "admin", login, retrievedStatus);
                         }
                     }else{
                         System.out.println("Password");
