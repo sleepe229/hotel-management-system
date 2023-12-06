@@ -32,7 +32,7 @@ public class DBLoginExistUser {
                 while (resultSet.next()){
                     String retrievedPassword = resultSet.getString("password");
                     String retrievedStatus = resultSet.getString("status");
-                    if (retrievedPassword.equals(password)){
+                    if (BCrypt.checkpw(password, retrievedPassword)){
                         switch (retrievedStatus){
                             case "user" -> changeScene(actionEvent, "/com/example/trash/user-logged-in.fxml", "user", login, retrievedStatus);
                             case "hotel" -> changeScene(actionEvent, "/com/example/trash/hotel-logged-in.fxml", "hotel", login, retrievedStatus);

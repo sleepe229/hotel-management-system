@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 
 import java.sql.*;
 
+import static com.example.trash.DBUtils.DBPasswordHashing.hashed;
 import static com.example.trash.DBUtils.OtherUtils.changeScene;
 import static com.example.trash.DBUtils.OtherUtils.isEmptyFields;
 import static com.example.trash.DBUtils.DBConnection.DBConnecting;
@@ -18,6 +19,7 @@ public class DBSignUpClient {
         if (isEmptyFields(login, password)){
             return;
         }
+        password = hashed(password);
 
         try{
             connection = DBConnecting();
@@ -37,7 +39,7 @@ public class DBSignUpClient {
                 psInsert.setString(3, "user");
                 psInsert.executeUpdate();
 
-                changeScene(actionEvent, "user-logged-in.fxml", "xexexeex", login, "user");
+                changeScene(actionEvent, "/com/example/trash/user-logged-in.fxml", "xexexeex", login, "user");
             }
         } catch (SQLException e){
             e.printStackTrace();
