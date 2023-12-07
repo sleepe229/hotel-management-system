@@ -25,12 +25,12 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Button>
-                <TableView fx:id="table_view" layoutX="49.0" layoutY="74.0" prefHeight="184.0" prefWidth="504.0">
+                <TableView fx:id="table_view" layoutX="49.0" layoutY="74.0" prefHeight="184.0" prefWidth="502">
                     <columns>
-                        <TableColumn fx:id="table_column_c1" prefWidth="92.79993438720703" style="-fx-background-color: #ADD8E6;" text="id" />
-                        <TableColumn fx:id="table_column_c2" prefWidth="160.00006103515625" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="name" />
-                        <TableColumn fx:id="table_column_c3" prefWidth="100.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="stars" />
-                        <TableColumn fx:id="table_column_c4" prefWidth="149.60000610351562" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="location" />
+                        <TableColumn fx:id="table_column_c1" prefWidth="90" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="id" />
+                        <TableColumn fx:id="table_column_c2" prefWidth="160" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="name" />
+                        <TableColumn fx:id="table_column_c3" prefWidth="100" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="stars" />
+                        <TableColumn fx:id="table_column_c4" prefWidth="150" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="location" />
                     </columns>
                 </TableView>
                 <TextField fx:id="tf_room_founder_id" layoutX="51.0" layoutY="26.0" prefHeight="26.0" prefWidth="158.0" promptText="rooms by hotel id" style="-fx-background-radius: 10; -fx-background-color: F7F6F2;" />

@@ -50,12 +50,6 @@ public class RoomBookingController implements Initializable {
         });
     }
     private void reloadTable(ActionEvent actionEvent){
-        table_column_hotel_id.setText("id");
-        table_column_room_number.setText("room number");
-        table_column_fullname.setText("fullname");
-        table_column_phone_number.setText("number");
-        table_column_email.setText("email");
-        table_column_room_status.setText("room status");
         table_view_booked_number.setItems(DBBookedRoomFinder.finderBookedRooms(actionEvent, UserLoggedInController.LAST_USER_LOGIN));
         table_column_hotel_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         table_column_room_number.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));

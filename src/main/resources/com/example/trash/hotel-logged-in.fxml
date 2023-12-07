@@ -20,10 +20,10 @@
                         <TableColumn fx:id="table_column_hotel_id" prefWidth="51.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="hotel id" />
                         <TableColumn fx:id="table_column_room_number" prefWidth="83.199951171875" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="room number" />
                         <TableColumn fx:id="table_column_client_fullname" minWidth="0.0" prefWidth="100.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client full name" />
-                        <TableColumn fx:id="table_column_client_login" prefWidth="69.5999755859375" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client login" />
-                        <TableColumn fx:id="table_column_client_phone_number" prefWidth="132.800048828125" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client phone number" />
-                        <TableColumn fx:id="table_column_client_email" prefWidth="78.39996337890625" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client email" />
-                        <TableColumn fx:id="table_column_room_status" prefWidth="75.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="status" />
+                        <TableColumn fx:id="table_column_client_login" prefWidth="93" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client login" />
+                        <TableColumn fx:id="table_column_client_phone_number" prefWidth="90" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client phone number" />
+                        <TableColumn fx:id="table_column_client_email" prefWidth="90" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="client email" />
+                        <TableColumn fx:id="table_column_room_status" prefWidth="90" style="-fx-background-color: #ADD8E6; -fx-border-color: #B0C4DE;" text="status" />
                     </columns>
                 </TableView>
                 <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="265.0" AnchorPane.bottomAnchor="-263.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

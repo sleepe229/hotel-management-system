@@ -19,8 +19,9 @@ public class DBBookedRoomAction {
         ResultSet resultSet = null;
         try {
             connection = DBConnecting();
-            psCheckRoomExists = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and status = 'checking'");
+            psCheckRoomExists = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and roomnumber = ?");
             psCheckRoomExists.setInt(1, Integer.parseInt(id));
+            psCheckRoomExists.setInt(2, Integer.parseInt(number));
             resultSet = psCheckRoomExists.executeQuery();
 
             switch (operation) {
@@ -31,7 +32,7 @@ public class DBBookedRoomAction {
                         alert.setContentText("Rechange data. You cant use that.");
                         alert.show();
                     } else {
-                        psAction = connection.prepareStatement("update booking_rooms set status = 'ready_to_buy' where id = ? and roomnumber = ? and clientlogin = ?");
+                        psAction = connection.prepareStatement("update booking_rooms set status = 'ready_to_buy' where id = ? and roomnumber = ? and clientlogin = ? and status = 'checking'");
                         psAction.setInt(1, Integer.parseInt(id));
                         psAction.setInt(2, Integer.parseInt(number));
                         psAction.setString(3, userlogin);
@@ -43,10 +44,10 @@ public class DBBookedRoomAction {
                 }
                 case "reject" -> {
                     if (resultSet.isBeforeFirst()) {
-                        psAction = connection.prepareStatement("delete from booking_rooms where id = ? and number = ? and clientlogin = ?");
+                        psAction = connection.prepareStatement("delete from booking_rooms where id = ? and roomnumber = ? and clientlogin = ?");
                         psAction.setInt(1, Integer.parseInt(id));
                         psAction.setInt(2, Integer.parseInt(number));
-                        psAction.setString(3, UserLoggedInController.LAST_USER_LOGIN);
+                        psAction.setString(3, userlogin);
                         psAction.executeUpdate();
                         psAction = connection.prepareStatement("update rooms set status = 'free' where hotel_id = ? and number = ?");
                         psAction.setInt(1, Integer.parseInt(id));

@@ -50,12 +50,14 @@ public class HotelLoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 DBBookedRoomAction.actionBookingRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_login.getText(), "accept");
+                reloadTable(actionEvent);
             }
         });
         button_reject_room.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 DBBookedRoomAction.actionBookingRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), tf_client_login.getText(), "reject");
+                reloadTable(actionEvent);
             }
         });
     }

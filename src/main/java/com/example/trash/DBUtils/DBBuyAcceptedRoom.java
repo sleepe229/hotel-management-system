@@ -19,24 +19,24 @@ public class DBBuyAcceptedRoom {
         ResultSet resultSet = null;
         try {
             connection = DBConnecting();
-            psCheckHotelExists = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and roomnumber = ? and clientlogin = ?");
+            psCheckHotelExists = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and roomnumber = ? and clientlogin = ? and status = 'ready_to_buy'");
             psCheckHotelExists.setInt(1, Integer.parseInt(id));
             psCheckHotelExists.setInt(2, Integer.parseInt(roomnumber));
             psCheckHotelExists.setString(3, UserLoggedInController.LAST_USER_LOGIN);
             resultSet = psCheckHotelExists.executeQuery();
 
-            if (!resultSet.isBeforeFirst()) {
-                System.out.println("Room not booked");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("That room aint booked with u.");
-                alert.show();
-            } else {
+            if (resultSet.isBeforeFirst()) {
                 psInsert = connection.prepareStatement("update booking_rooms set status = 'bought' where id = ? and roomnumber = ?");
                 psInsert.setInt(1, Integer.parseInt(id));
                 psInsert.setInt(2, Integer.parseInt(roomnumber));
                 psInsert.executeUpdate();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("U bought the room");
+                alert.show();
+            } else {
+                System.out.println("Room not booked");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("That room aint booked with u.");
                 alert.show();
             }
 
