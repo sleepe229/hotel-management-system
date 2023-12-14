@@ -54,15 +54,7 @@ public class UserLoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (!isEmptyField(tf_room_founder_id.getText())) {
-                    table_column_c1.setText("hotel_id");
-                    table_column_c2.setText("type of room");
-                    table_column_c3.setText("status");
-                    table_column_c4.setText("number of room");
-                    table_view.setItems(DBRoomFinder.finderRooms(actionEvent, tf_room_founder_id.getText()));
-                    table_column_c1.setCellValueFactory(new PropertyValueFactory<>("hotel_id"));
-                    table_column_c2.setCellValueFactory(new PropertyValueFactory<>("type"));
-                    table_column_c3.setCellValueFactory(new PropertyValueFactory<>("status"));
-                    table_column_c4.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));
+                    reloadRoomList(actionEvent);
                 }
             }
         });
@@ -76,6 +68,7 @@ public class UserLoggedInController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 DBBookingRoom.bookRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText(), LAST_USER_LOGIN, tf_client_phone_number.getText(), tf_client_username.getText(), tf_client_email.getText());
+                reloadRoomList(actionEvent);
             }
         });
         button_booked_rooms.setOnAction(new EventHandler<ActionEvent>() {
@@ -95,5 +88,16 @@ public class UserLoggedInController implements Initializable {
         table_column_c2.setCellValueFactory(new PropertyValueFactory<>("name"));
         table_column_c3.setCellValueFactory(new PropertyValueFactory<>("stars"));
         table_column_c4.setCellValueFactory(new PropertyValueFactory<>("location"));
+    }
+    void reloadRoomList(ActionEvent actionEvent){
+        table_column_c1.setText("hotel_id");
+        table_column_c2.setText("type of room");
+        table_column_c3.setText("status");
+        table_column_c4.setText("number of room");
+        table_view.setItems(DBRoomFinder.finderRooms(actionEvent, tf_room_founder_id.getText()));
+        table_column_c1.setCellValueFactory(new PropertyValueFactory<>("hotel_id"));
+        table_column_c2.setCellValueFactory(new PropertyValueFactory<>("type"));
+        table_column_c3.setCellValueFactory(new PropertyValueFactory<>("status"));
+        table_column_c4.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));
     }
 }

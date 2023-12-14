@@ -46,6 +46,7 @@ public class RoomBookingController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 DBBuyAcceptedRoom.buyAcceptedRoom(actionEvent, tf_hotel_id.getText(), tf_room_number.getText());
+                reloadTable(actionEvent);
             }
         });
     }

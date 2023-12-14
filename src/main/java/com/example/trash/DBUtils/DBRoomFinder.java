@@ -26,19 +26,12 @@ public class DBRoomFinder {
             resultSet = preparedStatement.executeQuery();
             RoomsList.clear();
 
-            if (!resultSet.isBeforeFirst()) {
-                System.out.println("Hotel not founded in the DB");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Provided credentials are incorrect");
-                alert.show();
-            } else {
-                while (resultSet.next()) {
-                    RoomsList.add(new RoomDTO(
-                        resultSet.getInt("hotel_id"),
-                        resultSet.getString("type"),
-                        resultSet.getString("status"),
-                        resultSet.getInt("number")));
-                }
+            while (resultSet.next()) {
+                RoomsList.add(new RoomDTO(
+                    resultSet.getInt("hotel_id"),
+                    resultSet.getString("type"),
+                    resultSet.getString("status"),
+                    resultSet.getInt("number")));
             }
 
         } catch (SQLException e) {
