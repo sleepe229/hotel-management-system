@@ -15,15 +15,25 @@ public class DBBookingRoom {
         Connection connection = null;
         PreparedStatement psAction = null;
         PreparedStatement psCheckRoomExists = null;
-        ResultSet resultSet = null;
+        PreparedStatement psBookedRoom = null;
+        ResultSet resultExistSet = null;
+        ResultSet resultBookedSet = null;
         try {
             connection = DBConnecting();
-            psCheckRoomExists = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and roomnumber = ?");
+            psBookedRoom = connection.prepareStatement("SELECT * FROM booking_rooms WHERE id = ? and roomnumber = ?");
+            psBookedRoom.setInt(1, Integer.parseInt(hotel_id));
+            psBookedRoom.setInt(2, Integer.parseInt(room_number));
+            resultBookedSet = psBookedRoom.executeQuery();
+            psCheckRoomExists = connection.prepareStatement("SELECT * FROM rooms WHERE hotel_id = ? and number = ?");
             psCheckRoomExists.setInt(1, Integer.parseInt(hotel_id));
             psCheckRoomExists.setInt(2, Integer.parseInt(room_number));
-            resultSet = psCheckRoomExists.executeQuery();
+            resultExistSet = psCheckRoomExists.executeQuery();
 
-            if (resultSet.isBeforeFirst()) {
+            if (!resultExistSet.isBeforeFirst()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Room not exist.");
+                alert.show();
+            } else if (resultBookedSet.isBeforeFirst()){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Room has been booked by other client.");
                 alert.show();
@@ -49,9 +59,23 @@ public class DBBookingRoom {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null) {
+            if (resultExistSet != null) {
                 try {
-                    resultSet.close();
+                    resultExistSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (psBookedRoom != null) {
+                try {
+                    psBookedRoom.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (resultBookedSet != null) {
+                try {
+                    resultBookedSet.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
