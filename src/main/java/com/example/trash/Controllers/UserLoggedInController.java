@@ -59,7 +59,7 @@ public class UserLoggedInController implements Initializable {
                     table_column_c3.setText("status");
                     table_column_c4.setText("number of room");
                     table_view.setItems(DBRoomFinder.finderRooms(actionEvent, tf_room_founder_id.getText()));
-                    table_column_c1.setCellValueFactory(new PropertyValueFactory<>("id"));
+                    table_column_c1.setCellValueFactory(new PropertyValueFactory<>("hotel_id"));
                     table_column_c2.setCellValueFactory(new PropertyValueFactory<>("type"));
                     table_column_c3.setCellValueFactory(new PropertyValueFactory<>("status"));
                     table_column_c4.setCellValueFactory(new PropertyValueFactory<>("roomnumber"));

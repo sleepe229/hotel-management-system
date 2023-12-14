@@ -35,7 +35,7 @@
                </font></Text>
             <TextField fx:id="tf_room_number" layoutX="487.0" layoutY="258.0" prefHeight="25.0" prefWidth="123.0" promptText="number" style="-fx-background-color: D9D9D9; -fx-background-radius: 30;" />
             <TextField fx:id="tf_room_type" layoutX="199.0" layoutY="255.0" prefHeight="25.0" prefWidth="106.0" promptText="type" style="-fx-background-color: D9D9D9; -fx-background-radius: 30;" />
-            <TextField fx:id="tf_hotel_for_room_id" layoutX="57.0" layoutY="258.0" prefHeight="25.0" prefWidth="112.0" promptText="id" style="-fx-background-color: D9D9D9; -fx-background-radius: 30;" />
+            <TextField fx:id="tf_hotel_for_room_id" layoutX="57.0" layoutY="258.0" prefHeight="25.0" prefWidth="112.0" promptText="hotel_id" style="-fx-background-color: D9D9D9; -fx-background-radius: 30;" />
             <Text fill="WHITE" layoutX="305.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ROOM" wrappingWidth="59.3642578125">
                <font>
                   <Font name="System Bold" size="18.0" />

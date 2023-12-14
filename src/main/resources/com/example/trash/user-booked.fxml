@@ -18,14 +18,14 @@
             </image>
         </ImageView>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b1" height="401.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-        <TableView fx:id="table_view_booked_number" layoutY="36.0" prefHeight="238.0" prefWidth="600.0">
+        <TableView fx:id="table_view_booked_number" layoutX="10.0" layoutY="36.0" prefHeight="238.0" prefWidth="580.0" AnchorPane.bottomAnchor="127.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="36.0">
             <columns>
-                <TableColumn fx:id="table_column_hotel_id" prefWidth="56.00006103515625" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="hotel id" />
-                <TableColumn fx:id="table_column_room_number" prefWidth="93.60003662109375" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="room number" />
-                <TableColumn fx:id="table_column_fullname" prefWidth="160.79998779296875" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="full name" />
-                <TableColumn fx:id="table_column_phone_number" prefWidth="102.0" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="phone number" />
+                <TableColumn fx:id="table_column_hotel_id" prefWidth="56" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="hotel id" />
+                <TableColumn fx:id="table_column_room_number" prefWidth="94" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="room number" />
+                <TableColumn fx:id="table_column_fullname" prefWidth="160" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="full name" />
+                <TableColumn fx:id="table_column_phone_number" prefWidth="100" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="phone number" />
                 <TableColumn fx:id="table_column_email" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="email" />
-                <TableColumn fx:id="table_column_room_status" prefWidth="108.0" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="status" />
+                <TableColumn fx:id="table_column_room_status" prefWidth="100" style="-fx-border-color: #B0C4DE; -fx-background-color: #ADD8E6;" text="status" />
             </columns>
         </TableView>
         <TextField fx:id="tf_hotel_id" layoutX="87.0" layoutY="298.0" promptText="hotel id" style="-fx-background-radius: 10;" />
